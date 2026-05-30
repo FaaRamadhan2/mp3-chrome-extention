@@ -56,8 +56,6 @@ mp3-chrome-extention/
 ├─ sc/
 │  ├─ server.py
 │  ├─ ytdl-a_crx.py
-│  ├─ requirements.txt
-│  ├─ run_server.bat
 │  └─ cookies/
 │     └─ youtube.com_cookies.txt
 │
@@ -95,8 +93,6 @@ Folder ini berisi semua file backend/local script.
 sc/
 ├─ server.py
 ├─ ytdl-a_crx.py
-├─ requirements.txt
-├─ run_server.bat
 └─ cookies/
    └─ youtube.com_cookies.txt
 ```
@@ -105,8 +101,6 @@ Isi utama:
 
 - `server.py` → local HTTP server bridge.
 - `ytdl-a_crx.py` → downloader utama berbasis `yt-dlp`.
-- `requirements.txt` → Python dependencies.
-- `run_server.bat` → shortcut menjalankan server di Windows.
 - `cookies/` → optional cookies file.
 
 ## Requirements
@@ -116,7 +110,7 @@ Pastikan sudah terinstall:
 - Python 3.10+
 - Google Chrome / Chromium-based browser
 - FFmpeg
-- Python dependency dari `sc/requirements.txt`
+- `yt-dlp`
 
 Cek Python:
 
@@ -130,6 +124,12 @@ Cek FFmpeg:
 ffmpeg -version
 ```
 
+Install / update `yt-dlp`:
+
+```bash
+python -m pip install -U yt-dlp
+```
+
 Jika FFmpeg belum ada, install dulu dan pastikan command `ffmpeg` bisa dipanggil dari terminal.
 
 ## Installation
@@ -141,11 +141,10 @@ git clone https://github.com/USERNAME/REPOSITORY_NAME.git
 cd mp3-chrome-extention
 ```
 
-Install dependency:
+Install dependency Python:
 
 ```bash
-cd sc
-python -m pip install -r requirements.txt
+python -m pip install -U yt-dlp
 ```
 
 ## Run Local Server
@@ -156,13 +155,7 @@ Masuk ke folder `sc`:
 cd sc
 ```
 
-Windows:
-
-```bat
-run_server.bat
-```
-
-Atau manual:
+Jalankan server:
 
 ```bash
 python server.py
@@ -340,7 +333,6 @@ Kemungkinan penyebab:
 Update `yt-dlp`:
 
 ```bash
-cd sc
 python -m pip install -U yt-dlp
 ```
 
