@@ -159,7 +159,7 @@ if not song_list:
 # BASE YT-DLP CONFIG
 # =========================
 base_ydl_opts = {
-    "format": "bestaudio/best",
+    "format": "bestaudio[ext=m4a]/bestaudio[ext=webm]/bestaudio/best[height<=480]",
     "noplaylist": True,
     "ignoreerrors": True,
     "remote_components": ["ejs:github"],
