@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direct MP3 Downloader</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="badge">YT-DLP LOCAL EXECUTOR</div>
+      <h1>Direct MP3 Downloader</h1>
+      <p>Ambil URL tab aktif lalu execute downloader Python secara langsung lewat local server.</p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <span class="label">Active Tab</span>
+        <span id="tabStatus" class="pill">checking...</span>
+      </div>
+
+      <div id="urlBox" class="url-box">Loading current tab URL...</div>
+
+      <button id="downloadBtn" class="download-btn" type="button" disabled>
+        <span class="icon">⬇</span>
+        <span>Download MP3</span>
+      </button>
+
+      <div id="status" class="status">Ready.</div>
+    </section>
+
+    <footer>
+      Server: <code>127.0.0.1:8765</code>
+    </footer>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

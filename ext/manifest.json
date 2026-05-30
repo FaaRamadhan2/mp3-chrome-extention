@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Direct MP3 Downloader",
+  "description": "Download MP3 from the active tab via local yt-dlp executor.",
+  "version": "2.0.0",
+  "permissions": ["tabs", "activeTab"],
+  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Direct MP3 Downloader",
+    "default_popup": "popup.html"
+  }
+}
