@@ -12,6 +12,31 @@ cookies_file = base_dir / "cookies" / "youtube.com_cookies.txt"
 
 
 # =========================
+# YT-DLP LOGGER
+# =========================
+class YtdlpCleanLogger:
+    HIDDEN_WARNINGS = (
+        "HTTP Error 429: Too Many Requests",
+        "Unable to fetch GVS PO Token",
+        "Missing required Visitor Data",
+    )
+
+    def debug(self, msg):
+        pass
+
+    def warning(self, msg):
+        text = str(msg)
+
+        if any(hidden in text for hidden in self.HIDDEN_WARNINGS):
+            return
+
+        print(f"WARNING: {text}")
+
+    def error(self, msg):
+        print(f"ERROR: {msg}")
+
+
+# =========================
 # INPUT URL HANDLING
 # =========================
 def collect_urls():
@@ -101,7 +126,9 @@ print("🎵✨ YouTube MP3 Downloader ✨🎵\n")
 # =========================
 meta_opts = {
     "quiet": True,
+    "no_warnings": True,
     "ignoreerrors": True,
+    "logger": YtdlpCleanLogger(),
     "remote_components": ["ejs:github"],
 }
 
@@ -162,6 +189,8 @@ base_ydl_opts = {
     "format": "bestaudio[ext=m4a]/bestaudio[ext=webm]/bestaudio/best[height<=480]",
     "noplaylist": True,
     "ignoreerrors": True,
+    "no_warnings": True,
+    "logger": YtdlpCleanLogger(),
     "remote_components": ["ejs:github"],
     "postprocessors": [{
         "key": "FFmpegExtractAudio",
